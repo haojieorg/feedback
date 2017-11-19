@@ -15,17 +15,19 @@ class Employee(db.Model):
     __tablename__ = 'employee'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
+    gender = db.Column(db.String)
     mobile = db.Column(db.String)
     address = db.Column(db.String)
     text = db.Column(db.Text)
-    create_time = db.Column(db.DateTime)
+    c_time = db.Column(db.DateTime)
 
     departmentid = db.Column(db.Integer, db.ForeignKey('department.id'))
     department = db.relationship('Department', backref=db.backref('employees', lazy='dynamic'))
 
-    def __init__(self, name=None, mobile=None, address=None, text=None, create_time=None):
+    def __init__(self, name=None, gender=None,mobile=None, address=None, text=None, c_time=None):
         self.name = name
+        self.gender = gender
         self.mobile = mobile
         self.address = address
         self.text = text
-        self.create_time = datetime.now()
+        self.c_time = datetime.now()

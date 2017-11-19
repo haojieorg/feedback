@@ -1,13 +1,14 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,TextAreaField
-from wtforms.validators import DataRequired
+from wtforms import StringField,TextAreaField,SelectField,RadioField
+
 
 class PostForm(FlaskForm):
-    name= StringField('姓名',validators=[DataRequired])
-    mobile=StringField('电话',validators=[DataRequired])
-    address = StringField('地址',validators=[DataRequired])
+    name= StringField('姓名')
+    gender = RadioField('性别',choices=[('先生','先生'),('女士','女士')])
+    mobile=StringField('电话')
+    address = StringField('地址')
+    departmentid = SelectField('热力公司')
     text = TextAreaField('反馈问题')
 
-
 class AddDepartment(FlaskForm):
-    name = StringField('公司名称',validators=[DataRequired])
+    name = StringField('公司名称')

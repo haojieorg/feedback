@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+    {% block main_context %}
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>添加反馈问题</h4>
+                </div>
+                <div class="panel-body">
+                    <form action="#" method="post" role="form" class="form-horizontal">
+
+                        <div class="form-group">
+                            {{ form.name.label(class="col-md-2 control-label") }}
+                            <div class="col-md-6">
+                                {{ form.name(class="form-control") }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            {{ form.gender.label(class="col-md-2 control-label") }}
+                            <div class="col-md-6">
+                                {% for gender in form.gender %}
+                                    {{ gender }}{{ gender.label }}
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            {{ form.mobile.label(class="col-md-2 control-label") }}
+                            <div class="col-md-6">
+                                {{ form.mobile(class="form-control") }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            {{ form.address.label(class="col-md-2 control-label") }}
+                            <div class="col-md-6">
+                                {{ form.address(class="form-control") }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            {{ form.departmentid.label(class="col-md-2 control-label") }}
+                            <div class="col-md-6">
+                                {{ form.departmentid(class="form-control") }}
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            {{ form.text.label(class="col-md-2 control-label") }}
+                            <div class="col-md-6">
+                                {{ form.text(class="form-control ",rows="10",cols="20") }}
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-offset-2">
+                            <button type="submit" class="btn btn-primary">提交</button>
+                            <button type="reset" class="btn btn-primary">重置</button>
+                            <button type="button" class="btn btn-default">返回列表</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
