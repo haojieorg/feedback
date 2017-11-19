@@ -1,0 +1,31 @@
+{% macro render_paginate(paginate,endpoint) %}
+    <div class="text-center">
+        <ul class="pagination pagination-lg">
+            <li><a href="{{ url_for(endpoint,page=1) }}">首页</a></li>
+            {% if paginate.has_prev %}
+                <li><a href="{{ url_for(endpoint,page=paginate.prev_num) }}">«</a></li>
+            {% endif %}
+
+
+            {% for page in paginate.iter_pages() %}
+                {% if page %}
+                    {% if page != paginate.page %}
+                        <li><a href="{{ url_for(endpoint,page=page) }}">{{ page }}</a></li>
+                    {% else %}
+                        <li class="active"><a href="#">{{ page }}</a></li>
+                    {% endif %}
+
+                {% endif %}
+
+            {% endfor %}
+
+
+            {% if paginate.has_next %}
+                <li><a href="{{ url_for(endpoint,page=paginate.next_num) }}">»</a></li>
+            {% endif %}
+
+            <li><a href="{{ url_for(endpoint,page=paginate.pages) }}">末页</a></li>
+        </ul>
+    </div>
+
+{% endmacro %}
