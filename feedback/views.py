@@ -23,13 +23,15 @@ class FeedbackPost(MethodView):
 
 class FeedbackList(MethodView):
     def get(self,page=1):
-        form = Employee.query.paginate(page,per_page=10)
+        kw=request.args.get('kw')
+
+        form = Employee.query.filter(Employee.name.contains('%{}%'.format(kw))).paginate(page,per_page=10) if kw else Employee.query.paginate(page,per_page=10)
         return render_template('feedback_list.html',form=form)
-    def post(self):
-        pass
+
+
 
 class FeedbackDel(MethodView):
-    def get(self,id):
+    def get(self,id=None):
         emp = Employee.query.get(id)
         db.session.delete(emp)
         db.session.commit()
