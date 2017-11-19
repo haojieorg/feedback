@@ -4,7 +4,7 @@ from wtforms import StringField,TextAreaField,SelectField,RadioField
 
 class PostForm(FlaskForm):
     name= StringField('姓名')
-    gender = RadioField('性别',choices=[('先生','先生'),('女士','女士')])
+    gender = RadioField('性别',choices=[('男','男'),('女','女')])
     mobile=StringField('电话')
     address = StringField('地址')
     departmentid = SelectField('热力公司')

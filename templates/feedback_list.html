@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% import 'helper.html' as helper %}
 {% block main_context %}
     <div class="row">
     <div class="panel panel-default">
@@ -21,19 +22,19 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for emp in form %}
+                {% for emp in form.items %}
                 <tr>
-                    <td>{{ loop.index }}</td>
+                    <td>{{ emp.id }}</td>
                     <td>{{ emp.name }}</td>
                     <td>{{ emp.gender }}</td>
                     <td>{{ emp.mobile }}</td>
                     <td>{{ emp.address }}</td>
                     <td>{{ emp.department.name }}</td>
-                    <td>{{ emp.c_time.strftime('%Y-%m-%d') }}</td>
+                    <td>{{ emp.c_time.strftime('%Y-%m-%d %H-%M') }}</td>
                     <td>
                         <a href=""><i class="fa fa-search"></i></a>
-                        <a href=""><i class="fa fa-pencil"></i></a>
-                        <a href=""><i class="fa fa-trash"></i></a>
+                        <a href="{{ url_for('admin.edit',id=emp.id) }}"><i class="fa fa-pencil"></i></a>
+                        <a href="{{ url_for('admin.del',id=emp.id) }}"><i class="fa fa-trash"></i></a>
                     </td>
                 </tr>
                 {% endfor %}
@@ -42,6 +43,9 @@
                 </tbody>
             </table>
         </div>
+    <div class="panel-footer">
+        {{ helper.render_paginate(form,'admin.emplist') }}
+    </div>
     </div>
     </div>
 {% endblock %}
