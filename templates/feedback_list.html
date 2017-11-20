@@ -39,9 +39,9 @@
                     <td>{{ emp.department.name }}</td>
                     <td>{{ emp.c_time.strftime('%Y-%m-%d %H-%M') }}</td>
                     <td>
-                        <a href=""><i class="fa fa-search"></i></a>
-                        <a href="{{ url_for('admin.edit',id=emp.id) }}"><i class="fa fa-pencil"></i></a>
-                        <a href="{{ url_for('admin.del',id=emp.id) }}"><i class="fa fa-trash"></i></a>
+                        <a href=""><i class="fa fa-search fa-lg"></i></a>
+                        <a href="{{ url_for('admin.edit',id=emp.id) }}"><i class="fa fa-pencil fa-lg"></i></a>
+                        <a href="{{ url_for('admin.del',id=emp.id) }}"><i class="fa fa-trash fa-lg"></i></a>
                     </td>
                 </tr>
                 {% endfor %}
@@ -50,9 +50,8 @@
                 </tbody>
             </table>
         </div>
-    <div class="panel-footer">
         {{ helper.render_paginate(form,'admin.emplist') }}
-    </div>
+
     </div>
     </div>
 {% endblock %}
